@@ -1,0 +1,13 @@
+[
+{
+  "directory": "/home/xeno/prac/cg/build",
+  "command": "/usr/bin/g++   -I../Test/Tools/doctest   -fPIC -fno-omit-frame-pointer -faligned-new -fno-builtin -g -g   -std=gnu++11 -o Test/CMakeFiles/Comp.dir/Test.cpp.o -c /home/xeno/prac/cg/Test/Test.cpp",
+  "file": "/home/xeno/prac/cg/Test/Test.cpp"
+},
+
+{
+  "directory": "/home/xeno/prac/cg/build",
+  "command": "/usr/bin/g++   -I../Test/Tools/doctest   -fPIC -fno-omit-frame-pointer -faligned-new -fno-builtin -g -g   -std=gnu++11 -o Test/CMakeFiles/Comp.dir/__/Array/sliding-window/p001.cpp.o -c /home/xeno/prac/cg/Array/sliding-window/p001.cpp",
+  "file": "/home/xeno/prac/cg/Array/sliding-window/p001.cpp"
+}
+]

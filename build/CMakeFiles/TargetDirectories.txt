@@ -1,0 +1,5 @@
+/home/xeno/prac/cg/build/CMakeFiles/rebuild_cache.dir
+/home/xeno/prac/cg/build/CMakeFiles/edit_cache.dir
+/home/xeno/prac/cg/build/Test/CMakeFiles/rebuild_cache.dir
+/home/xeno/prac/cg/build/Test/CMakeFiles/edit_cache.dir
+/home/xeno/prac/cg/build/Test/CMakeFiles/Comp.dir
