@@ -7,7 +7,31 @@
 
 {
   "directory": "/home/xeno/prac/cg/build",
-  "command": "/usr/bin/g++   -I../Test/Tools/doctest   -fPIC -fno-omit-frame-pointer -faligned-new -fno-builtin -g -g   -std=gnu++11 -o Test/CMakeFiles/Comp.dir/__/Array/sliding-window/p001.cpp.o -c /home/xeno/prac/cg/Array/sliding-window/p001.cpp",
-  "file": "/home/xeno/prac/cg/Array/sliding-window/p001.cpp"
+  "command": "/usr/bin/g++   -I../Test/Tools/doctest   -fPIC -fno-omit-frame-pointer -faligned-new -fno-builtin -g -g   -std=gnu++11 -o Test/CMakeFiles/Comp.dir/__/DNC/FenwickTree/ft0.cpp.o -c /home/xeno/prac/cg/DNC/FenwickTree/ft0.cpp",
+  "file": "/home/xeno/prac/cg/DNC/FenwickTree/ft0.cpp"
+},
+
+{
+  "directory": "/home/xeno/prac/cg/build",
+  "command": "/usr/bin/g++   -I../Test/Tools/doctest   -fPIC -fno-omit-frame-pointer -faligned-new -fno-builtin -g -g   -std=gnu++11 -o Test/CMakeFiles/Comp.dir/__/DNC/FenwickTree/ft1.cpp.o -c /home/xeno/prac/cg/DNC/FenwickTree/ft1.cpp",
+  "file": "/home/xeno/prac/cg/DNC/FenwickTree/ft1.cpp"
+},
+
+{
+  "directory": "/home/xeno/prac/cg/build",
+  "command": "/usr/bin/g++   -I../Test/Tools/doctest   -fPIC -fno-omit-frame-pointer -faligned-new -fno-builtin -g -g   -std=gnu++11 -o Test/CMakeFiles/Comp.dir/__/DNC/FenwickTree/ft1_range_update_point_query.cpp.o -c /home/xeno/prac/cg/DNC/FenwickTree/ft1_range_update_point_query.cpp",
+  "file": "/home/xeno/prac/cg/DNC/FenwickTree/ft1_range_update_point_query.cpp"
+},
+
+{
+  "directory": "/home/xeno/prac/cg/build",
+  "command": "/usr/bin/g++   -I../Test/Tools/doctest   -fPIC -fno-omit-frame-pointer -faligned-new -fno-builtin -g -g   -std=gnu++11 -o Test/CMakeFiles/Comp.dir/__/DNC/FenwickTree/ft1_range_update_range_query.cpp.o -c /home/xeno/prac/cg/DNC/FenwickTree/ft1_range_update_range_query.cpp",
+  "file": "/home/xeno/prac/cg/DNC/FenwickTree/ft1_range_update_range_query.cpp"
+},
+
+{
+  "directory": "/home/xeno/prac/cg/build",
+  "command": "/usr/bin/g++   -I../Test/Tools/doctest   -fPIC -fno-omit-frame-pointer -faligned-new -fno-builtin -g -g   -std=gnu++11 -o Test/CMakeFiles/Comp.dir/__/DNC/FenwickTree/ft_indices.cpp.o -c /home/xeno/prac/cg/DNC/FenwickTree/ft_indices.cpp",
+  "file": "/home/xeno/prac/cg/DNC/FenwickTree/ft_indices.cpp"
 }
 ]

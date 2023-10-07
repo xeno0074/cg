@@ -96,12 +96,40 @@ build Test/CMakeFiles/Comp.dir/Test.cpp.o: CXX_COMPILER__Comp ../Test/Test.cpp |
   OBJECT_DIR = Test/CMakeFiles/Comp.dir
   OBJECT_FILE_DIR = Test/CMakeFiles/Comp.dir
 
-build Test/CMakeFiles/Comp.dir/__/Array/sliding-window/p001.cpp.o: CXX_COMPILER__Comp ../Array/sliding-window/p001.cpp || cmake_object_order_depends_target_Comp
-  DEP_FILE = Test/CMakeFiles/Comp.dir/__/Array/sliding-window/p001.cpp.o.d
+build Test/CMakeFiles/Comp.dir/__/DNC/FenwickTree/ft0.cpp.o: CXX_COMPILER__Comp ../DNC/FenwickTree/ft0.cpp || cmake_object_order_depends_target_Comp
+  DEP_FILE = Test/CMakeFiles/Comp.dir/__/DNC/FenwickTree/ft0.cpp.o.d
   FLAGS = -fPIC -fno-omit-frame-pointer -faligned-new -fno-builtin -g -g   -std=gnu++11
   INCLUDES = -I../Test/Tools/doctest
   OBJECT_DIR = Test/CMakeFiles/Comp.dir
-  OBJECT_FILE_DIR = Test/CMakeFiles/Comp.dir/__/Array/sliding-window
+  OBJECT_FILE_DIR = Test/CMakeFiles/Comp.dir/__/DNC/FenwickTree
+
+build Test/CMakeFiles/Comp.dir/__/DNC/FenwickTree/ft1.cpp.o: CXX_COMPILER__Comp ../DNC/FenwickTree/ft1.cpp || cmake_object_order_depends_target_Comp
+  DEP_FILE = Test/CMakeFiles/Comp.dir/__/DNC/FenwickTree/ft1.cpp.o.d
+  FLAGS = -fPIC -fno-omit-frame-pointer -faligned-new -fno-builtin -g -g   -std=gnu++11
+  INCLUDES = -I../Test/Tools/doctest
+  OBJECT_DIR = Test/CMakeFiles/Comp.dir
+  OBJECT_FILE_DIR = Test/CMakeFiles/Comp.dir/__/DNC/FenwickTree
+
+build Test/CMakeFiles/Comp.dir/__/DNC/FenwickTree/ft1_range_update_point_query.cpp.o: CXX_COMPILER__Comp ../DNC/FenwickTree/ft1_range_update_point_query.cpp || cmake_object_order_depends_target_Comp
+  DEP_FILE = Test/CMakeFiles/Comp.dir/__/DNC/FenwickTree/ft1_range_update_point_query.cpp.o.d
+  FLAGS = -fPIC -fno-omit-frame-pointer -faligned-new -fno-builtin -g -g   -std=gnu++11
+  INCLUDES = -I../Test/Tools/doctest
+  OBJECT_DIR = Test/CMakeFiles/Comp.dir
+  OBJECT_FILE_DIR = Test/CMakeFiles/Comp.dir/__/DNC/FenwickTree
+
+build Test/CMakeFiles/Comp.dir/__/DNC/FenwickTree/ft1_range_update_range_query.cpp.o: CXX_COMPILER__Comp ../DNC/FenwickTree/ft1_range_update_range_query.cpp || cmake_object_order_depends_target_Comp
+  DEP_FILE = Test/CMakeFiles/Comp.dir/__/DNC/FenwickTree/ft1_range_update_range_query.cpp.o.d
+  FLAGS = -fPIC -fno-omit-frame-pointer -faligned-new -fno-builtin -g -g   -std=gnu++11
+  INCLUDES = -I../Test/Tools/doctest
+  OBJECT_DIR = Test/CMakeFiles/Comp.dir
+  OBJECT_FILE_DIR = Test/CMakeFiles/Comp.dir/__/DNC/FenwickTree
+
+build Test/CMakeFiles/Comp.dir/__/DNC/FenwickTree/ft_indices.cpp.o: CXX_COMPILER__Comp ../DNC/FenwickTree/ft_indices.cpp || cmake_object_order_depends_target_Comp
+  DEP_FILE = Test/CMakeFiles/Comp.dir/__/DNC/FenwickTree/ft_indices.cpp.o.d
+  FLAGS = -fPIC -fno-omit-frame-pointer -faligned-new -fno-builtin -g -g   -std=gnu++11
+  INCLUDES = -I../Test/Tools/doctest
+  OBJECT_DIR = Test/CMakeFiles/Comp.dir
+  OBJECT_FILE_DIR = Test/CMakeFiles/Comp.dir/__/DNC/FenwickTree
 
 
 # =============================================================================
@@ -111,7 +139,7 @@ build Test/CMakeFiles/Comp.dir/__/Array/sliding-window/p001.cpp.o: CXX_COMPILER_
 #############################################
 # Link the executable Test/Comp
 
-build Test/Comp: CXX_EXECUTABLE_LINKER__Comp Test/CMakeFiles/Comp.dir/Test.cpp.o Test/CMakeFiles/Comp.dir/__/Array/sliding-window/p001.cpp.o
+build Test/Comp: CXX_EXECUTABLE_LINKER__Comp Test/CMakeFiles/Comp.dir/Test.cpp.o Test/CMakeFiles/Comp.dir/__/DNC/FenwickTree/ft0.cpp.o Test/CMakeFiles/Comp.dir/__/DNC/FenwickTree/ft1.cpp.o Test/CMakeFiles/Comp.dir/__/DNC/FenwickTree/ft1_range_update_point_query.cpp.o Test/CMakeFiles/Comp.dir/__/DNC/FenwickTree/ft1_range_update_range_query.cpp.o Test/CMakeFiles/Comp.dir/__/DNC/FenwickTree/ft_indices.cpp.o
   FLAGS = -fPIC -fno-omit-frame-pointer -faligned-new -fno-builtin -g -g
   OBJECT_DIR = Test/CMakeFiles/Comp.dir
   POST_BUILD = :
