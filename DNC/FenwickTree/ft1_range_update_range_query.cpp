@@ -1,3 +1,9 @@
+// Instead of storing the array in the fenwick tree, store the differences of array
+// elements so prefix sum forms the elements of the given array.
+// 1. range update -> adding the delta at range start will propagate the
+// sum to all elements in the prefix sums, then we can simply subtract that delta after the range end
+// 2. range query -> we can get the range sum by maintaining a secondary fenwick tree to adjust the sum upon update
+
 #include <iostream>
 #include <vector>
 
@@ -5,21 +11,29 @@ using namespace std;
 
 class FENWICK_TREE
 {
-public:
     int n; // array size is N => fenwick tree size is N+1
     vector<int> t;
+    vector<int> b;
 
+public:
     FENWICK_TREE(int n)
     {
         this->n = n + 1;
         t.resize(n + 1, 0);
+        b.resize(n + 1, 0);
     }
 
-    void build(const vector<int> &a)
+    void build(const vector<int> &a) // build using the diff
     {
-        for (int i = 1; i < n; ++i)
+        t[1] = a[0];
+        if (2 < n)
         {
-            t[i] += a[i - 1];
+            t[2] += t[1];
+        }
+
+        for (int i = 2; i < n; ++i)
+        {
+            t[i] += a[i - 1] - a[i - 2];
             int p = i + (i & -i);
             if (p < n)
             {
@@ -28,53 +42,48 @@ public:
         }
     }
 
-    void add(int r, int x)
+    void add(vector<int> tree, int r, int x)
     {
         for (++r; r < n; r += (r & -r))
         {
-            t[r] += x;
-        }
-    }
-
-    // void range_add(int l, int r, int val)
-    // {
-    //     add(l, val);
-    //     add(r + 1, -val);
-    // }
-
-    void add(vector<int> &b, int r, int x)
-    {
-        for (++r; r < n; r += (r & -r))
-        {
-            b[r] += x;
+            tree[r] += x;
         }
     }
 
     void range_add(int l, int r, int x)
     {
-        add
+        add(t, l, x);
+        add(t, r + 1, -x);
+        add(b, l, x * (l - 1));
+        add(b, r + 1, -x * r);
     }
 
-    int sum(int r)
+    int sum(vector<int> tree, int r)
     {
         int ret = 0;
         for (++r; r >= 1; r -= (r & -r))
         {
-            ret += t[r];
+            ret += tree[r];
         }
 
         return ret;
     }
 
-    int sum(int l, int r)
+    int prefix_sum(int r)
     {
-        return sum(r) - sum(l - 1);
+        return sum(t, r) * r - sum(b, r);
+    }
+
+    int range_sum(int l, int r)
+    {
+        return prefix_sum(r) - prefix_sum(l - 1);
     }
 };
 
+// TEST ---------------------------------------------------------------------------------------------------------------
 void printVec(const vector<int> &v, const char info[])
 {
-    cout << info << "\n";
+    cout << info;
     for (int i = 0; i < v.size(); ++i)
     {
         cout << v[i] << " ";
@@ -82,48 +91,48 @@ void printVec(const vector<int> &v, const char info[])
     cout << "\n";
 }
 
+vector<int> getPrefixSum(vector<int> v)
+{
+    int N = v.size();
+    vector<int> sumArr(N);
+    sumArr[0] = v[0];
+    for (int i = 1; i < N; ++i)
+    {
+        sumArr[i] = v[i] + sumArr[i - 1];
+    }
+
+    return sumArr;
+}
+
+void printFtSum(FENWICK_TREE ft, int N, const char info[])
+{
+    cout << info;
+    for (int i = 0; i < N; ++i)
+    {
+        cout << ft.prefix_sum(i) << " ";
+    }
+    cout << "\n";
+}
+
 int main()
 {
+    // given array
     vector<int> A{1, 3, -8, 2, -5, 6, 20, 0, 10};
     const int N = A.size();
 
     FENWICK_TREE ft(N);
     ft.build(A);
 
-    vector<int> sumArr(N);
-    sumArr[0] = A[0];
-    for (int i = 1; i < N; ++i)
-    {
-        sumArr[i] = A[i] + sumArr[i - 1];
-    }
-
-    printVec(A, "A-");
-    printVec(sumArr, "sumArr-");
-
-    cout << "ft.sum list-\n";
-    for (int i = 0; i < N; ++i)
-    {
-        cout << ft.sum(i) << " ";
-    }
-    cout << "\n";
-
-    for (int i = 0; i < N; ++i)
-    {
-        if (ft.sum(i) != sumArr[i])
-        {
-            cout << "Failure\n";
-            break;
-        }
-    }
+    printVec(A, "A-\n");
+    printVec(getPrefixSum(A), "sum Array-\n");
+    printFtSum(ft, N, "ft.sum Array-\n");
 
     ft.range_add(2, 4, 50);
+    ft.range_add(3, 6, 300);
 
-    cout << "ft.sum list-\n";
-    for (int i = 0; i < N; ++i)
-    {
-        cout << ft.sum(i) << " ";
-    }
-    cout << "\n";
+    printFtSum(ft, N, "ft.sum Array-\n");
 
-    printVec(ft.t, "ft.t-");
+    cout << ft.range_sum(2, 6) << endl;
+
+    return 0;
 }
