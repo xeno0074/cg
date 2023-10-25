@@ -8,14 +8,14 @@ include_directories(${inc_dir})
 # Set source files for build
 # Add any newly added source file below
 
-# file(GLOB arraySrc ${CMAKE_SOURCE_DIR}/Array/*.cpp)
-# file(GLOB arraySlidingWindowSrc ${CMAKE_SOURCE_DIR}/Array/sliding-window/*.cpp)
-# list(APPEND arraySrc ${arraySlidingWindowSrc})
+file(GLOB arraySrc ${CMAKE_SOURCE_DIR}/Array/*.cpp)
+file(GLOB arraySlidingWindowSrc ${CMAKE_SOURCE_DIR}/Array/sliding-window/*.cpp)
+list(APPEND arraySrc ${arraySlidingWindowSrc})
 
-file(GLOB ftSrc ${CMAKE_SOURCE_DIR}/DNC/FenwickTree/*.cpp)
+# file(GLOB ftSrc ${CMAKE_SOURCE_DIR}/DNC/FenwickTree/*.cpp)
 
 list(APPEND src ${arraySrc})
-list(APPEND src ${ftSrc})
+# list(APPEND src ${ftSrc})
 message(src=${src})
 
 # Build executable

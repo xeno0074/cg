@@ -2,7 +2,7 @@
 
 script_path="$(dirname -- "${BASH_SOURCE[0]}")"
 
-cmake -S $script_path -B $script_path/build
+cmake -S $script_path -B $script_path/build -G Ninja
 
 cd $script_path/build
 ninja
