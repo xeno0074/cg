@@ -19,7 +19,7 @@ int countGoodArrays(vector<int> v, int k)
 
     for (int i = 0, j = 1; i < j; ++j)
     {
-        mp[v[j]]++
+        mp[v[j]]++;
     }
 
     return count;
