@@ -17,13 +17,14 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-unordered_map<string, TreeNode *> mp;
-vector<TreeNode *> vt;
+struct MapVal
+{
+    bool inserted;
+    TreeNode *node;
+};
 
-// v = [-200, 200]
-// v_ = v + 200
-// concat v_ digits to string
-string getStrVal(int v) { return to_string(v + 200); }
+unordered_map<string, MapVal> mp;
+vector<TreeNode *> vt;
 
 string dfs(TreeNode *root)
 {
@@ -32,46 +33,77 @@ string dfs(TreeNode *root)
         return ".";
     }
 
-    string ret = getStrVal(root->val);
+    string ret = to_string(root->val);
+    ret.append(",");
     ret.append(dfs(root->left));
+    ret.append(",");
     ret.append(dfs(root->right));
+    ret.append(",");
 
-    cout << ret << endl;
+    cout << "converted string: " << ret << endl;
 
     if (mp.count(ret) > 0)
     {
-        vt.emplace_back(root);
+        if (mp[ret].inserted == false)
+        {
+            vt.emplace_back(root);
+            mp[ret].inserted = true;
+        }
     }
     else
     {
-        mp.insert(make_pair(ret, root));
+        mp[ret] = MapVal{false, root};
     }
 
     return ret;
 }
 
-/**
- * Definition for a binary tree node.
- * struct TreeNode {
- *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
- *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
- *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- * };
- */
 class Solution
 {
 public:
-    vector<TreeNode *> findDuplicateSubtrees(TreeNode *root) {}
+    vector<TreeNode *> findDuplicateSubtrees(TreeNode *root)
+    {
+        mp.clear();
+        vt.clear();
+        dfs(root);
+
+        return vt;
+    }
 };
+
+void dfsp(TreeNode *root)
+{
+    if (root == nullptr)
+    {
+        return;
+    }
+    cout << root->val << " ";
+    dfsp(root->left);
+    dfsp(root->right);
+}
+
+void printvtn()
+{
+    for (TreeNode *p : vt)
+    {
+        dfsp(p);
+    }
+
+    cout << endl;
+}
 
 int main()
 {
-    cout << getStrVal(200) << endl;
-    cout << getStrVal(-200) << endl;
-    cout << getStrVal(0) << endl;
-    cout << getStrVal(95) << endl;
-    cout << getStrVal(199) << endl;
+    TreeNode root(1), e12(2), e13(3), e124(4), e132(2), e134(4), e1324(4);
+    root.left = &e12;
+    root.right = &e13;
+    e12.left = &e124;
+    e13.left = &e132;
+    e13.right = &e134;
+    e132.left = &e1324;
+
+    Solution sol;
+    sol.findDuplicateSubtrees(&root);
+
+    printvtn();
 }

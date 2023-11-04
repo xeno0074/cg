@@ -4,13 +4,6 @@
 
 using namespace std;
 
-void swap(int &x, int &y)
-{
-    int z = x;
-    x = y;
-    y = z;
-}
-
 void reverse(vector<int> &nums, int start = 0)
 {
     int n = nums.size();
@@ -26,12 +19,13 @@ void nextPermutation(vector<int> &nums)
 {
     int n = nums.size();
 
-    if (n == 1)
+    if (n == 0 || n == 1)
     {
         return;
     }
 
     int bp = n - 2;
+    int rep; // bp element to be replaced with
 
     for (; bp >= 0; --bp)
     {
@@ -39,30 +33,37 @@ void nextPermutation(vector<int> &nums)
         {
             break;
         }
-        if (bp == 0)
-        {
-            reverse(nums);
-            return;
-        }
     }
 
-    int just_gt_bp = bp + 1;
-
-    for (; just_gt_bp < n; ++just_gt_bp)
+    if (bp == -1)
     {
-        if (nums[bp] > nums[just_gt_bp])
-        {
-            break;
-        }
+        // bp element not found
+        bp = 0;
     }
-    --just_gt_bp;
+    else
+    {
+        // find element just greater than bp element and swap
+        rep = bp + 1;
+        while (rep < n)
+        {
+            if (nums[rep] < nums[bp])
+            {
+                break;
+            }
+            rep++;
+        }
+        rep--;
+        swap(nums[bp], nums[rep]);
+        ++bp;
+    }
 
-    swap(nums[bp], nums[just_gt_bp]);
+    cout << "bp=" << bp << "\n";
+    cout << "rep=" << rep << "\n";
 
-    reverse(nums, bp + 1);
+    sort(nums.begin() + bp, nums.end());
 }
 
-void printV(const vector<int> &v, const char header[] = "", const char separator[] = ", ")
+void printv(const vector<int> &v, const char header[] = "", const char separator[] = ", ")
 {
     cout << header;
 
@@ -78,19 +79,38 @@ void printV(const vector<int> &v, const char header[] = "", const char separator
 int main()
 {
     vector<int> v1{8, 3, 6, 9, 7, 4, 2};
-    vector<int> v2{3, 2, 1};
-    vector<int> v3{1, 2};
-    vector<int> v4{1, 5, 1};
+    vector<int> v2{1, 2, 3};
+    vector<int> v3{3, 2, 1};
+    vector<int> v4{1, 1, 5};
+    vector<int> v5{1, 2};
+    vector<int> v6{1, 5, 1};
 
+    printv(v1);
     nextPermutation(v1);
-    printV(v1);
+    printv(v1);
 
+    cout << "-------------------------\n";
+    printv(v2);
     nextPermutation(v2);
-    printV(v2);
+    printv(v2);
 
+    cout << "-------------------------\n";
+    printv(v3);
     nextPermutation(v3);
-    printV(v3);
+    printv(v3);
 
+    cout << "-------------------------\n";
+    printv(v4);
     nextPermutation(v4);
-    printV(v4);
+    printv(v4);
+
+    cout << "-------------------------\n";
+    printv(v5);
+    nextPermutation(v5);
+    printv(v5);
+
+    cout << "-------------------------\n";
+    printv(v6);
+    nextPermutation(v6);
+    printv(v6);
 }
