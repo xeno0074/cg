@@ -17,22 +17,35 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
+unordered_map<string, TreeNode *> mp;
+vector<TreeNode *> vt;
+
 // v = [-200, 200]
 // v_ = v + 200
 // concat v_ digits to string
 string getStrVal(int v) { return to_string(v + 200); }
 
-string getKey(TreeNode *root)
+string dfs(TreeNode *root)
 {
-    if (!root)
+    if (root == nullptr)
     {
         return ".";
     }
 
     string ret = getStrVal(root->val);
+    ret.append(dfs(root->left));
+    ret.append(dfs(root->right));
 
-    ret.append(getKey(root->left));
-    ret.append(getKey(root->right));
+    cout << ret << endl;
+
+    if (mp.count(ret) > 0)
+    {
+        vt.emplace_back(root);
+    }
+    else
+    {
+        mp.insert(make_pair(ret, root));
+    }
 
     return ret;
 }
@@ -51,27 +64,8 @@ string getKey(TreeNode *root)
 class Solution
 {
 public:
-    vector<TreeNode *> findDuplicateSubtrees(TreeNode *root)
-    {
-        vector<TreeNode *> ret;
-
-        return ret;
-    }
+    vector<TreeNode *> findDuplicateSubtrees(TreeNode *root) {}
 };
-
-TreeNode *genTree(const vector<string> &strs)
-{
-    queue<TreeNode *> q;
-
-    TreeNode *root = new TreeNode(atoi(strs[0].c_str()));
-
-    q.push(root);
-
-    while (!q.empty())
-    {
-        TreeNode *node = q.pop();
-        }
-}
 
 int main()
 {
