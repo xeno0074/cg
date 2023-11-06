@@ -15,7 +15,7 @@ def getNextGreater(arr: List[int]):
 
 class Solution:
     def getWinner(self, arr: List[int], k: int) -> int:
-            
+        
 
         return 0
 

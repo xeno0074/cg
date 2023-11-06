@@ -10,27 +10,18 @@ public:
     vector<int> nextGreaterElements(vector<int> &nums)
     {
         int n = nums.size();
-        stack<int> stk;        // stack to store next greater element
-        vector<int> nextGt(n); // store next greater element
+        stack<int> stk;            // stack to store next greater element
+        vector<int> nextGt(n, -1); // store next greater element
 
         for (int i = 2 * n - 1; i >= 0; --i)
         {
-            while (!stk.empty())
+            while (!stk.empty() && nums[i % n] >= stk.top())
             {
-                if (nums[i % n] < stk.top())
-                {
-                    nextGt[i % n] = stk.top();
-                    break;
-                }
-                else
-                {
-                    stk.pop();
-                }
-
-                if (stk.empty())
-                {
-                    nextGt[i % n] = -1;
-                }
+                stk.pop();
+            }
+            if (!stk.empty() && i < n)
+            {
+                nextGt[i] = stk.top();
             }
 
             stk.push(nums[i % n]);
@@ -38,35 +29,6 @@ public:
 
         return nextGt;
     }
-
-#if 0
-    vector<int> nextGreaterElements(vector<int> &nums)
-    {
-        int n = nums.size();
-        stack<int> stk; // stack to store indices of next greater element
-        vector<int> nextGt(n);
-
-        for (int i = 2 * n - 1; i >= 0; --i)
-        {
-            while (!stk.empty())
-            {
-                if (nums[i % n] < nums[stk.top()])
-                {
-                    nextGt[i % n] = stk.top();
-                    break;
-                }
-                else
-                {
-                    stk.pop();
-                }
-            }
-
-            stk.push(i % n);
-        }
-
-        return nextGt;
-    }
-#endif
 };
 
 void printv(const vector<int> &v)
