@@ -39,6 +39,7 @@ class MinHeap implements Heap {
         }
 
         if (smallest != node) {
+            
 
             swap(node, smallest);
             heapifyDown(smallest);

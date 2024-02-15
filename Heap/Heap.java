@@ -8,5 +8,5 @@ interface Heap {
 
     public void insert(int val);
 
-    public void remove();
+    public void remove();   
 }
